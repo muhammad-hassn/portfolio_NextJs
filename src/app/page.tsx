@@ -1,17 +1,18 @@
-"use client"
-
-import Animations from "./animations/page"
+"use client";
+import Modal from "./animations/Modal";
+import { useState } from "react";
+import Animations from "./animations/page";
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
 
   return (
     <>
-
       <link rel="stylesheet" href="font.css" />
-
       <body>
-      
         <section className="flex flex-col justify-between h-screen ">
-        <Animations />
+          <Animations />
           <header className="flex items-center w-full justify-between px-4 max-w-7xl mx-auto absolute ">
             {/* picture */}
             <svg
@@ -39,7 +40,7 @@ export default function Home() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                className="feather feather-sun"
+                className="hover:scale-110 duration-300"
               >
                 <circle cx="12" cy="12" r="5"></circle>
                 <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -62,45 +63,52 @@ export default function Home() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                className="hidden"
+                className="hidden hover:scale-110 duration-300"
               >
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
               {/* phone logo */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="feather feather-phone"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
+              <a href="tel:+92 3408062138" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="hover:scale-110 duration-300"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </a>
+
               {/* Whatsapp logo */}
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fab"
-                data-icon="whatsapp"
-                className="svg-inline--fa fa-whatsapp fa-w-14"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 448 512"
+              <a
+                href="https://wa.me/+923408062138?text=Only Chat"
+                target="_blank"
               >
-                <path
-                  fill="currentColor "
-                  d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"
-                ></path>
-              </svg>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fab"
+                  data-icon="whatsapp"
+                  className="svg-inline--fa fa-whatsapp fa-w-14 hover:scale-110 duration-300"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor "
+                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"
+                  ></path>
+                </svg>
+              </a>
             </div>
-            
           </header>
           <div className="flex  mt-28 relative">
             <div className="w-full max-w-7xl mx-auto">
@@ -124,47 +132,71 @@ export default function Home() {
                 <p className="font-[merriwether] italic text-[20px] my-4 md:my-8">
                   Full Stack Developer
                 </p>
-                <button className="bg-[#4595eb]  py-2 px-5 duration-300  rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6] hover:scale-110 ease-in-out relative group">
+                <button
+                  onClick={handleOpenModal}
+                  className="bg-[#4595eb]  py-2 px-5 duration-300  rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6] hover:scale-110 ease-in-out relative group"
+                >
                   About Me
                   <svg
-                  // // xmlns:dc="http://purl.org/dc/elements/1.1/"
-                  // xmlns:cc="http://creativecommons.org/ns#"
-                  // xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                  // xmlns:svg="http://www.w3.org/2000/svg"
-                  // xmlns="http://www.w3.org/2000/svg"
-                  // xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                  // xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  width="44"
-                  height="44"
-                  viewBox="0 0 100 100"
-                  className="absolute top-1/2 -translate-y-1/2 -right-7 group-hover:-right-9 duration-200"
-                >
-                  <g transform="translate(0,-952.36218)">
-                    <path
-                      className="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;"
-                      d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-                      fill="#fff"
-                      fill-opacity="1"
-                      stroke="white"
-                      stroke-width="2"
-                      visibility="visible"
-                      display="inline"
-                      overflow="visible"
-                    />
-                  </g>
-                </svg>
+                    // // xmlns:dc="http://purl.org/dc/elements/1.1/"
+                    // xmlns:cc="http://creativecommons.org/ns#"
+                    // xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                    // xmlns:svg="http://www.w3.org/2000/svg"
+                    // xmlns="http://www.w3.org/2000/svg"
+                    // xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                    // xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                    version="1.1"
+                    x="0px"
+                    y="0px"
+                    width="44"
+                    height="44"
+                    viewBox="0 0 100 100"
+                    className="absolute top-1/2 -translate-y-1/2 -right-7 group-hover:-right-9 duration-200"
+                  >
+                    <g transform="translate(0,-952.36218)">
+                      <path
+                        className="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;"
+                        d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
+                        fill="#fff"
+                        fill-opacity="1"
+                        stroke="white"
+                        stroke-width="2"
+                        visibility="visible"
+                        display="inline"
+                        overflow="visible"
+                      />
+                    </g>
+                  </svg>
                 </button>
-                
+                <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                  <div className="">
+                    <h2 className="font-thin text-[#1788ae] text-3xl top-0">
+                      ABOUT ME
+                    </h2>
+                    <p>
+                      Hello! I’m Muhammad Hassan, a passionate Python developer
+                      with expertise in Django framework. Currently, I’m
+                      pursuing a degree in Software Engineering from PAF-KIET
+                      and specializing in AI Engineering from PIAIC. With a
+                      strong foundation in programming and a keen interest in
+                      AI, I offer the following services I help business owners
+                      and busy web developers to
+                      <br /> design & develop creative websites that fits their
+                      vision
+                      <br />
+                      and attracts the visitors to stay for ever. Technologies
+                      and <br />
+                      tools that I use to create such awesome websites.
+                    </p>
+                  </div>
+                </Modal>
               </div>
             </div>
 
             {/* <button className="absolute esm:ml-11 rounded w-auto font-bold -translate-x-32 translate-y-28 py-2 px-5 text-white  shadow-[0_0_10px_theme(colors.blue.500)] duration-700  hover:bg-gradient-to-l hover:from-[#1595b6]  hover:to-[#1f2667e6] ease-in-out ">About Me</button> */}
           </div>
 
-          <ul className="ml-auto translate-y-56 space-y-6 text-white absolute right-8 ">
+          <ul className="ml-auto translate-y-56 space-y-6 text-[#b0b2c3] absolute right-8 ">
             {/* linkedin Logo */}
             <li>
               <a
@@ -172,7 +204,7 @@ export default function Home() {
                 target="_blank"
               >
                 <svg
-                  className="w-7  hover:scale-125 duration-300"
+                  className="w-7 hover:text-white hover:scale-125 duration-300"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
                 >
@@ -187,7 +219,7 @@ export default function Home() {
             <li>
               <a href="https://www.instagram.com/_md.hassan__/" target="_blank">
                 <svg
-                  className="w-7 hover:scale-125 duration-300"
+                  className="w-7 hover:text-white hover:scale-125 duration-300"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
                 >
@@ -202,7 +234,7 @@ export default function Home() {
             <li>
               <a href="https://github.com/muhammad-hassn" target="_blank">
                 <svg
-                  className="w-7 hover:scale-125 duration-300"
+                  className="w-7 hover:text-white hover:scale-125 duration-300"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 496 512"
                 >
@@ -217,7 +249,7 @@ export default function Home() {
             <li>
               <a href="mailto:muhammadhassanmh4080@gmail.com">
                 <svg
-                  className="w-7 hover:scale-125 duration-300"
+                  className="w-7 hover:text-white hover:scale-125 duration-300"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
                 >
@@ -231,44 +263,144 @@ export default function Home() {
           </ul>
 
           <div className="relative self-center after:contents-[' '] after:absolute after:w-[2px] after:h-5 after:bg-white after:left-1/2 after:-translate-x-1/2 after:top-[75px]">
-          <button className="bg-[#4595eb] mb-14 py-2 px-5 duration-300  rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6] hover:scale-105 ease-in-out relative group ">
-                  latest Work
-                  <svg
-                  // // xmlns:dc="http://purl.org/dc/elements/1.1/"
-                  // xmlns:cc="http://creativecommons.org/ns#"
-                  // xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                  // xmlns:svg="http://www.w3.org/2000/svg"
-                  // xmlns="http://www.w3.org/2000/svg"
-                  // xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                  // xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  width="44"
-                  height="33"
-                  viewBox="0 0 100 100"
-                  className="absolute rotate-90 left-1/2 -translate-x-1/2 top-7 group-hover:top-10 duration-200"
-                >
-                  <g transform="translate(0,-952.36218)">
-                    <path
-                      className="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;"
-                      d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-                      fill="#fff"
-                      fill-opacity="1"
-                      stroke="white"
-                      stroke-width="2"
-                      visibility="visible"
-                      display="inline"
-                      overflow="visible"
-                    />
-                  </g>
-                </svg>
-          </button>
+            <button className="bg-[#4595eb] mb-14 py-2 px-5 duration-300  rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6] hover:scale-105 ease-in-out relative group ">
+              latest Work
+              <svg
+                // // xmlns:dc="http://purl.org/dc/elements/1.1/"
+                // xmlns:cc="http://creativecommons.org/ns#"
+                // xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                // xmlns:svg="http://www.w3.org/2000/svg"
+                // xmlns="http://www.w3.org/2000/svg"
+                // xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                // xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                version="1.1"
+                x="0px"
+                y="0px"
+                width="44"
+                height="33"
+                viewBox="0 0 100 100"
+                className="absolute rotate-90 left-1/2 -translate-x-1/2 top-7 group-hover:top-10 duration-200"
+              >
+                <g transform="translate(0,-952.36218)">
+                  <path
+                    className="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;"
+                    d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
+                    fill="#fff"
+                    fill-opacity="1"
+                    stroke="white"
+                    stroke-width="2"
+                    visibility="visible"
+                    display="inline"
+                    overflow="visible"
+                  />
+                </g>
+              </svg>
+            </button>
           </div>
+        </section>
 
+        <section className="max-w-screen-xl mx-auto px-4">
+          <h2 className="text-4xl w-max mx-auto text-center text-[#1788ae] border-b-2 border-[#1788ae]">
+            Latest Works
+          </h2>
+          <div className="flex gap-[80px] items-center mt-12">
+            <a href="#" className="w-full">
+              <img
+                className="max-w-[400px] mr-auto"
+                src="https://anuragsinghbam.netlify.app/images/harigurus.webp"
+                alt=""
+              />
+            </a>
+            <div className="w-full">
+              <h3 className="text-[#fc815c] font-bold text-4xl">Harigurus</h3>
+              <span className="text-[#fc815c] text-lg">(Event Booking)</span>
+              <p className="text-justify mt-2">
+                HariGurus is a one-stop-shop for all Hindu religious, customs
+                and traditional requirements. Built the complete site from
+                scratch.
+              </p>
+
+              <ul className="flex flex-wrap gap-2 mt-2">
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #react.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #express.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #node.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #swiper.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #mongoDB
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #mongoose
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #css
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #javascript
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #figma
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="flex gap-[80px] items-center mt-12">
+            <div className="w-full">
+              <h3 className="text-[#ffe578] font-bold text-4xl">EazyGrad</h3>
+              <span className="text-[#ffe578] text-lg">(EdTech Startup)</span>
+              <p className="text-justify mt-2">
+                Being a lead developer, revamped the site to a highly
+                responsive, and interactive website. Created new features and
+                pages. Worked as a team with product manager and ux designer.
+              </p>
+
+              <ul className="flex flex-wrap gap-2 mt-2">
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #react.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #express.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #node.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #swiper.js
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #mongoDB
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #mongoose
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #css
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #javascript
+                </li>
+                <li className="border rounded-[50px] border-[#999] px-[10px] py-[5px]">
+                  #figma
+                </li>
+              </ul>
+            </div>
+            <a href="#" className="w-full">
+              <img
+                className="max-w-[400px] ml-auto"
+                src="https://anuragsinghbam.netlify.app/images/eazygrad.webp"
+                alt=""
+              />
+            </a>
+          </div>
         </section>
       </body>
-
     </>
   );
 }
