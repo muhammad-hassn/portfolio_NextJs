@@ -33,7 +33,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
     //   }}
       >
         {children}
-        <button onClick={onClose} className='px-3 py-2 rounded mt-64 font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6] hover:scale-110 ease-in-out hover:shadow-[0_0_10px_blue]'>Close</button>
+        <button onClick={onClose} className='px-4 py-2 rounded  font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6] hover:scale-110 ease-in-out hover:shadow-[0_0_10px_blue]'>Close</button>
       </div>
     </div>
   );
